@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | LanguageBook</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/BuildBook.json");
+        var gameInstance = UnityLoader.instantiate("gameContainer", "Build/BuildBook_110_2.json", {
+            onProgress: UnityProgress
+        });
         var loadSound = false;
+
         function LoadSound() {
             if (loadSound == false) {
                 var audio = document.getElementById("sound");
@@ -22,12 +29,20 @@
             audio.play();
         }
     </script>
-    
-  </head>
-  <body>
+</head>
+
+<body>
+    <div class="webgl-content">
+        <div id="gameContainer" style="width: 1280px; height: 720px"></div>
+        <div class="footer" hidden>
+            <div class="webgl-logo"></div>
+            <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+            <div class="title">LanguageBook</div>
+        </div>
+    </div>
     <audio id="sound">
-        <source src="StreamingAssets/Audio/0.mp3" type="audio/mp3">
+      <source src="StreamingAssets/Audio/0.mp3" type="audio/mp3">
     </audio>
-    <div onclick="LoadSound()" id="gameContainer" style="width: 1280px; height: 720px; margin: auto"></div>
-  </body>
+</body>
+
 </html>
